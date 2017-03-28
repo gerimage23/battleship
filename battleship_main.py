@@ -5,8 +5,8 @@ from place_ship import *
 from computer import *
 
 
-def main()
-# Choose your enemy
+def main():
+    # Choose your enemy
     x_0 = 0
     y_0 = 0
     hit = 0
