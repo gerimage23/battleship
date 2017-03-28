@@ -1,6 +1,6 @@
 import random
 
-from display import clear
+from display import *
 from user import check_win
 
 

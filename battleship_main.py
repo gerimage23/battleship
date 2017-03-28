@@ -3,6 +3,7 @@ import copy
 from display import *
 from place_ship import *
 from computer import *
+from user import *
 
 
 def main():

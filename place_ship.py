@@ -1,5 +1,7 @@
 import random
 
+from display import *
+
 
 def validate(board, ship, x, y, ori):
     # validate the ship can be placed at given coordinates

@@ -1,4 +1,4 @@
-from display import clear
+from display import *
 
 
 def user_move(board, ships_data):
