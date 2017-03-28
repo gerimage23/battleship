@@ -1,6 +1,5 @@
 import copy
 import random
-from subprocess import call
 
 from display import *
 

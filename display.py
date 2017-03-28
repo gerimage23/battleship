@@ -1,4 +1,7 @@
 
+from subprocess import call
+
+
 def clear():
     call('clear')
     print('''.______        ___   .___________.___________. __       _______     _______. __    __   __  .______      
