@@ -1,5 +1,8 @@
 import random
 
+from display import clear
+from user import check_win
+
 
 def computer_move(board, ships_data):
     valid = False
