@@ -36,7 +36,7 @@ def computer_move(board, ships_data, player, player_2):
             print("\nPlayer 1's" + ship_name + "sunk!")
 
             # Color ship to red
-            ship_color_to_red(ships_data)
+            ship_color_to_red(ships_data, ship_name, board)
             print_board(player, player_2, None, board)
 
             # Check if this was the last ship -> WIN
@@ -111,7 +111,7 @@ def computer_ai(board, ships_data, player, player_2):
             global_variables.direction = 1
 
             # Color ship to red
-            ship_color_to_red(ships_data, ship_names)
+            ship_color_to_red(ships_data, ship_name, board)
             print_board(player, player_2, None, board)
 
             # Check if this was the last ship -> WIN

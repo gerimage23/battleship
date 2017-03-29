@@ -15,7 +15,7 @@ def ship_names(board_cell):
     return ship_name
 
 
-def ship_color_to_red(ships_data, ship_name):
+def ship_color_to_red(ships_data, ship_name, board):
     for ship_data in ships_data:
         if ship_data[0][0] == ship_name:
             for coords in ship_data[1:]:
@@ -85,7 +85,7 @@ def user_move(board, ships_data, player, player_2):
                 print("\n" + ship_name + " sunk!")
 
                 # Color ship to red
-                ship_color_to_red(ships_data, ship_name)
+                ship_color_to_red(ships_data, ship_name, board)
                 print_board(player, player_2, None, board)
 
                 # Check if this was the last ship -> WIN
