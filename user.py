@@ -27,12 +27,12 @@ def ship_color_to_red(ships_data):
     print_board(player, player_2, None, board)
 
 
-def is_cell_empty(board_cell):
+def is_cell_not_empty(board_cell):
     if board_cell == green("x") or board_cell == ship_color("0") or \
             board_cell == red('A') or board_cell == red('B') or \
             board_cell == red('S') or board_cell == red('D') or board_cell == red('P'):
-        return False
-    return True
+        return True
+    return False
 
 
 def user_move(board, ships_data, player, player_2):
@@ -67,7 +67,7 @@ def user_move(board, ships_data, player, player_2):
         board_cell = board[guess_row][guess_col]
 
         # Is this cell a new one?
-        if is_cell_empty(board_cell):
+        if is_cell_not_empty(board_cell):
             print("\nYou guessed that one already.")
             input('\nPress ENTER to continue')
             return

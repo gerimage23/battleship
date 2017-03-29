@@ -1,7 +1,7 @@
 import random
 
 from display import *
-from user import check_win, ship_name, is_cell_empty, ship_color_to_red
+from user import check_win, ship_name, is_cell_not_empty, ship_color_to_red
 
 
 def computer_move(board, ships_data, player, player_2):
@@ -14,7 +14,7 @@ def computer_move(board, ships_data, player, player_2):
         board_cell = board[x][y]
         # Is this cell a new one?
 
-        if is_cell_empty(board_cell):
+        if is_cell_not_empty(board_cell):
             continue
         else:
             valid = True
@@ -77,7 +77,7 @@ def computer_ai(board, ships_data, player, player_2):
         board_cell = board[x][y]
         # Is this cell a new one?
 
-        if is_cell_empty(board_cell):
+        if is_cell_not_empty(board_cell):
             if global_variables.hit_again == 1:
                 global_variables.direction *= -1
                 global_variables.x_prev = global_variables.x_0

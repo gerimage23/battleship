@@ -103,7 +103,7 @@ def main():
                 clear()
 
         print("\n" + player + " won!!!\n")
-        
+
         answer = 0
         while not answer:
             ask_for_answer = input("Would you like to start a new game? (y or n): ")
@@ -112,7 +112,7 @@ def main():
                 game = True
             elif ask_for_answer == 'n':
                 answer = True
-                game = False            
+                game = False
             else:
                 print("Please only type in y or n!")
 
