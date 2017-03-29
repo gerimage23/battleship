@@ -5,7 +5,7 @@ from place_ship import *
 from computer import *
 from user import *
 
-import globals
+import global_variables
 
 
 def main():
@@ -37,7 +37,7 @@ def main():
     #          "Submarine": 3,
     #          "Destroyer": 3,
     #          "Patrol Boat": 2}
-    ships = globals.ships
+    ships = global_variables.ships
     ships_data_1 = []
     ships_data_2 = []
 
@@ -90,7 +90,7 @@ def main():
 
         # computer move
         if player == "Computer":
-            if globals.hit == 0:
+            if global_variables.hit == 0:
                 board_enemy = computer_move(board_enemy, ships_data, player, player_2)
             else:
                 board_enemy = computer_ai(board_enemy, ships_data, player, player_2)

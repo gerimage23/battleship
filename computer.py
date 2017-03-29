@@ -14,7 +14,7 @@ def computer_move(board, ships_data, player, player_2):
         board_cell = board[x][y]
         # Is this cell a new one?
 
-        if board_cell == green("x") or board_cell == red('0') or board_cell == ship_color("0") or \
+        if board_cell == green("x") or board_cell == ship_color("0") or \
                 board_cell == red('A') or board_cell == red('B') or board_cell == red('S') or \
                 board_cell == red('D') or board_cell == red('P'):
             continue
@@ -37,9 +37,9 @@ def computer_move(board, ships_data, player, player_2):
         print("\nComputer hit a ship")
         board[x][y] = ship_color("0")
 
-        globals.hit = 1
-        globals.x_0 = x
-        globals.y_0 = y
+        global_variables.hit = 1
+        global_variables.x_0 = x
+        global_variables.y_0 = y
 
         # mark cell as hit and check if sunk
         board[-1][ship_name] -= 1
@@ -70,7 +70,7 @@ def computer_move(board, ships_data, player, player_2):
     else:
         print("\nMissed.")
         board[x][y] = green("x")
-        globals.hit = 0
+        global_variables.hit = 0
     print_board(player, player_2, None, board)
     input('\nPress ENTER to continue')
     return board
@@ -78,30 +78,31 @@ def computer_move(board, ships_data, player, player_2):
 
 def computer_ai(board, ships_data, player, player_2):
 
-    if globals.hit_again == 0:
-        globals.x_prev = globals.x_0
-        globals.y_prev = globals.y_0
+    if global_variables.hit_again == 0:
+        global_variables.x_prev = global_variables.x_0
+        global_variables.y_prev = global_variables.y_0
 
     valid = False
     while not valid:
 
-        x = globals.x_prev + globals.next_cell[globals.ai_i][0] * globals.direction
-        y = globals.y_prev + globals.next_cell[globals.ai_i][1] * globals.direction
+        x = global_variables.x_prev + global_variables.next_cell[global_variables.ai_i][0] * global_variables.direction
+        y = global_variables.y_prev + global_variables.next_cell[global_variables.ai_i][1] * global_variables.direction
         if x < 0 or x > 9 or y < 0 or y > 9:
-            if globals.hit_again == 1:
-                globals.direction *= -1
+            if global_variables.hit_again == 1:
+                global_variables.direction *= -1
             else:
-                globals.ai_i += 1
+                global_variables.ai_i += 1
             continue
         board_cell = board[x][y]
         # Is this cell a new one?
 
-        if board_cell == green("x") or board_cell == red('0') or board_cell == ship_color("0") or \
+        if board_cell == green("x") or board_cell == ship_color("0") or \
                 board_cell == red('A') or board_cell == red('B') or board_cell == red('S') or \
                 board_cell == red('D') or board_cell == red('P'):
 
-            globals.x_prev = x
-            globals.y_prev = y
+            # global_variables.x_prev = x
+            # global_variables.y_prev = y
+            global_variables.ai_i += 1
             continue
         else:
             valid = True
@@ -121,17 +122,18 @@ def computer_ai(board, ships_data, player, player_2):
             ship_name = "Patrol Boat"
         print("\nComputer hit a ship")
         board[x][y] = ship_color("0")
-        globals.hit_again = 1
-        globals.x_prev = x
-        globals.y_prev = y
+        global_variables.hit_again = 1
+        global_variables.x_prev = x
+        global_variables.y_prev = y
 
         # mark cell as hit and check if sunk
         board[-1][ship_name] -= 1
         if board[-1][ship_name] == 0:
             print("\nPlayer 1's " + ship_name + " sunk!")
-            globals.hit = 0
-            globals.hit_again = 0
-            globals.ai_i = 0
+            global_variables.hit = 0
+            global_variables.hit_again = 0
+            global_variables.ai_i = 0
+            global_variables.direction = 1
             # Color ship to red
             for ship_data in ships_data:
                 if ship_data[0][0] == ship_name:
@@ -158,10 +160,10 @@ def computer_ai(board, ships_data, player, player_2):
         print("\nMissed.")
         board[x][y] = green("x")
 
-        if globals.hit_again == 1:
-            globals.direction *= -1
+        if global_variables.hit_again == 1:
+            global_variables.direction *= -1
         else:
-            globals.ai_i += 1
+            global_variables.ai_i += 1
     print_board(player, player_2, None, board)
     input('\nPress ENTER to continue')
     return board
