@@ -1,7 +1,7 @@
 import random
 
 from display import *
-from user import check_win
+from user import check_win, ship_name, is_cell_empty, ship_color_to_red
 
 
 def computer_move(board, ships_data, player, player_2):
@@ -14,9 +14,7 @@ def computer_move(board, ships_data, player, player_2):
         board_cell = board[x][y]
         # Is this cell a new one?
 
-        if board_cell == green("x") or board_cell == ship_color("0") or \
-                board_cell == red('A') or board_cell == red('B') or board_cell == red('S') or \
-                board_cell == red('D') or board_cell == red('P'):
+        if is_cell_empty(board_cell):
             continue
         else:
             valid = True
@@ -24,16 +22,7 @@ def computer_move(board, ships_data, player, player_2):
     # checking
     if board_cell != "#":
 
-        if board_cell == ship_color("A"):
-            ship_name = "Aircraft Carrier"
-        elif board_cell == ship_color("B"):
-            ship_name = "Battleship"
-        elif board_cell == ship_color("S"):
-            ship_name = "Submarine"
-        elif board_cell == ship_color("D"):
-            ship_name = "Destroyer"
-        elif board_cell == ship_color("P"):
-            ship_name = "Patrol Boat"
+        ship_name = ship_name(board_cell)
         print("\nComputer hit a ship")
         board[x][y] = ship_color("0")
 
@@ -47,15 +36,7 @@ def computer_move(board, ships_data, player, player_2):
             print("\nPlayer 1's" + ship_name + "sunk!")
 
             # Color ship to red
-            for ship_data in ships_data:
-                if ship_data[0][0] == ship_name:
-                    for coords in ship_data[1:]:
-                        i = coords[0]
-                        j = coords[1]
-                        board[i][j] = red(ship_data[0][0][0])
-                    ships_data.remove(ship_data)
-            print_board(player, player_2, None, board)
-
+            ship_color_to_red(ships_data)
             # Check if this was the last ship -> WIN
             if check_win(board, ships_data):
                 return "WIN"
@@ -96,9 +77,7 @@ def computer_ai(board, ships_data, player, player_2):
         board_cell = board[x][y]
         # Is this cell a new one?
 
-        if board_cell == green("x") or board_cell == ship_color("0") or \
-                board_cell == red('A') or board_cell == red('B') or board_cell == red('S') or \
-                board_cell == red('D') or board_cell == red('P'):
+        if is_cell_empty(board_cell):
             if global_variables.hit_again == 1:
                 global_variables.direction *= -1
                 global_variables.x_prev = global_variables.x_0
@@ -113,16 +92,7 @@ def computer_ai(board, ships_data, player, player_2):
     # checking
     if board_cell != "#":
 
-        if board_cell == ship_color("A"):
-            ship_name = "Aircraft Carrier"
-        elif board_cell == ship_color("B"):
-            ship_name = "Battleship"
-        elif board_cell == ship_color("S"):
-            ship_name = "Submarine"
-        elif board_cell == ship_color("D"):
-            ship_name = "Destroyer"
-        elif board_cell == ship_color("P"):
-            ship_name = "Patrol Boat"
+        ship_name = ship_name(board_cell)
         print("\nComputer hit a ship")
         board[x][y] = ship_color("0")
         global_variables.hit_again = 1
@@ -137,16 +107,9 @@ def computer_ai(board, ships_data, player, player_2):
             global_variables.hit_again = 0
             global_variables.ai_i = 0
             global_variables.direction = 1
+
             # Color ship to red
-            for ship_data in ships_data:
-                if ship_data[0][0] == ship_name:
-                    for coords in ship_data[1:]:
-                        i = coords[0]
-                        j = coords[1]
-                        # if board_enemy[i][j] == board_cell:
-                        board[i][j] = red(ship_data[0][0][0])
-                    ships_data.remove(ship_data)
-            print_board(player, player_2, None, board)
+            ship_color_to_red(ships_data)
 
             # Check if this was the last ship -> WIN
             if check_win(board, ships_data):

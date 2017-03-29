@@ -1,6 +1,40 @@
 from display import *
 
 
+def ship_name(board_cell):
+    if board_cell == ship_color("A"):
+        ship_name = "Aircraft Carrier"
+    elif board_cell == ship_color("B"):
+        ship_name = "Battleship"
+    elif board_cell == ship_color("S"):
+        ship_name = "Submarine"
+    elif board_cell == ship_color("D"):
+        ship_name = "Destroyer"
+    elif board_cell == ship_color("P"):
+        ship_name = "Patrol Boat"
+    return ship_name
+
+
+def ship_color_to_red(ships_data):
+    for ship_data in ships_data:
+        if ship_data[0][0] == ship_name:
+            for coords in ship_data[1:]:
+                i = coords[0]
+                j = coords[1]
+                # if board_enemy[i][j] == board_cell:
+                board[i][j] = red(ship_data[0][0][0])
+            ships_data.remove(ship_data)
+    print_board(player, player_2, None, board)
+
+
+def is_cell_empty(board_cell):
+    if board_cell == green("x") or board_cell == ship_color("0") or \
+            board_cell == red('A') or board_cell == red('B') or \
+            board_cell == red('S') or board_cell == red('D') or board_cell == red('P'):
+        return False
+    return True
+
+
 def user_move(board, ships_data, player, player_2):
     # Ask a coordinate
     valid = False
@@ -31,47 +65,28 @@ def user_move(board, ships_data, player, player_2):
         return
     else:
         board_cell = board[guess_row][guess_col]
-        # Is this cell a new one?
 
-        if board_cell == green("x") or board_cell == red('0') or  board_cell == ship_color("0") or \
-                board_cell == red('A') or board_cell == red('B') or board_cell == red('S') or \
-                board_cell == red('D') or board_cell == red('P'):
+        # Is this cell a new one?
+        if is_cell_empty(board_cell):
             print("\nYou guessed that one already.")
             input('\nPress ENTER to continue')
             return
 
         # checking
         elif board_cell != "#":
-
-            if board_cell == ship_color("A"):
-                ship_name = "Aircraft Carrier"
-            elif board_cell == ship_color("B"):
-                ship_name = "Battleship"
-            elif board_cell == ship_color("S"):
-                ship_name = "Submarine"
-            elif board_cell == ship_color("D"):
-                ship_name = "Destroyer"
-            elif board_cell == ship_color("P"):
-                ship_name = "Patrol Boat"
+            # Get ship_name from the hit cell
+            ship_name = ship_name(board_cell)
             clear()
             print("\nYou hit a ship")
             board[guess_row][guess_col] = ship_color("0")
 
-            # mark cell as hit and check if sunk
+            # Mark cell as hit and check if sunk
             board[-1][ship_name] -= 1
             if board[-1][ship_name] == 0:
                 print("\n" + ship_name + " sunk!")
 
                 # Color ship to red
-                for ship_data in ships_data:
-                    if ship_data[0][0] == ship_name:
-                        for coords in ship_data[1:]:
-                            i = coords[0]
-                            j = coords[1]
-                            # if board_enemy[i][j] == board_cell:
-                            board[i][j] = red(ship_data[0][0][0])
-                        ships_data.remove(ship_data)
-                print_board(player, player_2, None, board)
+                ship_color_to_red(ships_data)
 
                 # Check if this was the last ship -> WIN
                 if check_win(board, ships_data):
