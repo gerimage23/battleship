@@ -14,7 +14,7 @@ def clear():
                                                                                                          ''')
 
 
-def print_board(board_you=None, board_enemy=None):
+def print_board(player, player_2, board_you=None, board_enemy=None):
 
     if board_you != None:
         if player != "Computer":

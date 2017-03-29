@@ -74,7 +74,7 @@ def place_ship(board, ship, s, ori, x, y):
     return board
 
 
-def computer_place_ships(board, ships, ships_data):
+def computer_place_ships(board, ships, ships_data, player, player_2):
     for ship in ships.keys():
         valid = False
         while(not valid):
@@ -127,9 +127,9 @@ def computer_place_ships(board, ships, ships_data):
 
 
 # Asking ship's coordinate from player
-def user_place_ships(board, ships, ships_data):
+def user_place_ships(board, ships, ships_data, player, player_2):
     clear()
-    print_board(board)
+    print_board(player, player_2, board)
     print("\n" + player + " - Place your ship")
     for ship in ships.keys():
 
@@ -161,7 +161,7 @@ def user_place_ships(board, ships, ships_data):
                         "Cannot place a ship there.\nThe ships cannot be placed that close to each other.\nPlease take a look at the board and try again.")
                     input("Hit ENTER to continue")
                     clear()
-                    print_board(board)
+                    print_board(player, player_2, board)
                     break
 
         row = []
@@ -179,7 +179,7 @@ def user_place_ships(board, ships, ships_data):
         # place the ship
         board = place_ship(board, ships[ship], ship_color(ship[0]), ori, x, y)
         clear()
-        print_board(board)
+        print_board(player, player_2, board)
 
     input("\nDone placing your ships. Hit ENTER to continue")
     clear()

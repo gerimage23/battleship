@@ -55,14 +55,14 @@ def main():
 
     # ship placement
     player = "Player 1"
-    user_1_board = user_place_ships(user_1_board, ships, ships_data_1)
+    user_1_board = user_place_ships(user_1_board, ships, ships_data_1, player, player_2)
     clear()
     player = "Player 2"
     if player_2 == "Player 2":
-        user_2_board = user_place_ships(user_2_board, ships, ships_data_2)
+        user_2_board = user_place_ships(user_2_board, ships, ships_data_2, player, player_2)
     else:
         player = "Computer"
-        user_2_board = computer_place_ships(user_2_board, ships, ships_data_2)
+        user_2_board = computer_place_ships(user_2_board, ships, ships_data_2, player, player_2)
 
     # game begins
     clear()
@@ -89,7 +89,7 @@ def main():
 
         # user move
         if player != "Computer":
-            print_board(None, board_enemy)
+            print_board(player, player_2, None, board_enemy)
             board_enemy = user_move(board_enemy, ships_data)
 
         # computer move

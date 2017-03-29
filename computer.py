@@ -56,7 +56,7 @@ def computer_move(board, ships_data):
                         # if board_enemy[i][j] == board_cell:
                         board_enemy[i][j] = red(ship_data[0][0][0])
                     ships_data.remove(ship_data)
-            print_board(None, board_enemy)
+            print_board(player, player_2, None, board_enemy)
 
             # Check if this was the last ship -> WIN
             if check_win(board_enemy, ships_data):
@@ -64,7 +64,7 @@ def computer_move(board, ships_data):
 
             input('\nPress ENTER to continue')
             return
-        print_board(None, board_enemy)
+        print_board(player, player_2, None, board_enemy)
         input('\nPress ENTER to continue')
         return
 
@@ -74,7 +74,7 @@ def computer_move(board, ships_data):
         board_enemy[x][y] = green("x")
         global hit
         hit = 0
-    print_board(None, board_enemy)
+    print_board(player, player_2, None, board_enemy)
     input('\nPress ENTER to continue')
     return board
 
@@ -153,7 +153,7 @@ def computer_ai(board, ships_data):
                         # if board_enemy[i][j] == board_cell:
                         board[i][j] = red(ship_data[0][0][0])
                     ships_data.remove(ship_data)
-            print_board(None, board)
+            print_board(player, player_2, None, board)
 
             # Check if this was the last ship -> WIN
             if check_win(board, ships_data):
@@ -161,7 +161,7 @@ def computer_ai(board, ships_data):
 
             input('\nPress ENTER to continue')
             return
-        print_board(None, board)
+        print_board(player, player_2, None, board)
         input('\nPress ENTER to continue')
         return
 
@@ -174,6 +174,6 @@ def computer_ai(board, ships_data):
             direction *= -1
         else:
             ai_i += 1
-    print_board(None, board)
+    print_board(player, player_2, None, board)
     input('\nPress ENTER to continue')
     return board
