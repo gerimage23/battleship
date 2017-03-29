@@ -107,10 +107,10 @@ def main():
         answer = 0
         while not answer:
             ask_for_answer = input("Would you like to start a new game? (y or n): ")
-            if ask_for_answer == y:
+            if ask_for_answer == 'y':
                 answer = True
                 valid = True
-            elif ask_for_answer == n:
+            elif ask_for_answer == 'n':
                 answer = False
                 valid = True
             else:
