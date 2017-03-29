@@ -142,7 +142,6 @@ def user_place_ships(board, ships, ships_data, player, player_2):
         valid = False
         while(not valid):
 
-            # print_board(board)
             print("\nPlacing a/an " + ship)
             x, y = get_coor()
             ori = v_or_h()
@@ -150,13 +149,12 @@ def user_place_ships(board, ships, ships_data, player, player_2):
             valid = validate(board, ships[ship], x, y, ori)
 
             if not valid:
-                print("Cannot place a ship there.)
+                print("Cannot place a ship there.")
                 print("The ships cannot be placed that close to each other.")
                 print("Please take a look at the board and try again.")
                 input("Hit ENTER to continue")
                 clear()
                 print_board(player, player_2, board)
-                # break
 
         row = []
         row.append([ship, ships[ship]])
