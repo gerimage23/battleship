@@ -1,19 +1,16 @@
 import copy
 
+from display import *
 from place_ship import *
 from computer import *
 from user import *
 
+import globals
+
 
 def main():
     # Choose your enemy
-    x_0 = 0
-    y_0 = 0
-    hit = 0
-    hit_again = 0
-    ai_i = 0
-    next_cell = [[1, 0], [0, 1], [-1, 0], [0, -1]]
-    direction = 1
+
     valid = False
 
     clear()
@@ -35,12 +32,12 @@ def main():
         board.append(['#'] * 10)
 
     # Ships
-    ships = {"Aircraft Carrier": 5,
-             "Battleship": 4,
-             "Submarine": 3,
-             "Destroyer": 3,
-             "Patrol Boat": 2}
-
+    # ships = {"Aircraft Carrier": 5,
+    #          "Battleship": 4,
+    #          "Submarine": 3,
+    #          "Destroyer": 3,
+    #          "Patrol Boat": 2}
+    ships = globals.ships
     ships_data_1 = []
     ships_data_2 = []
 
@@ -93,7 +90,7 @@ def main():
 
         # computer move
         if player == "Computer":
-            if hit == 0:
+            if globals.hit == 0:
                 board_enemy = computer_move(board_enemy, ships_data, player, player_2)
             else:
                 board_enemy = computer_ai(board_enemy, ships_data, player, player_2)

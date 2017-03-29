@@ -2,12 +2,7 @@
 import copy
 from subprocess import call
 
-
-ships = {"Aircraft Carrier": 5,
-         "Battleship": 4,
-         "Submarine": 3,
-         "Destroyer": 3,
-         "Patrol Boat": 2}
+import globals
 
 
 def clear():
@@ -22,7 +17,7 @@ def clear():
 
 
 def print_board(player, player_2, board_you=None, board_enemy=None):
-
+    ships = globals.ships
     if board_you != None:
         if player != "Computer":
             print('\n' + player + "'s board")
