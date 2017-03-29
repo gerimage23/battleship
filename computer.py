@@ -99,11 +99,14 @@ def computer_ai(board, ships_data, player, player_2):
         if board_cell == green("x") or board_cell == ship_color("0") or \
                 board_cell == red('A') or board_cell == red('B') or board_cell == red('S') or \
                 board_cell == red('D') or board_cell == red('P'):
-
-            # global_variables.x_prev = x
-            # global_variables.y_prev = y
-            global_variables.ai_i += 1
-            continue
+            if global_variables.hit_again == 1:
+                global_variables.direction *= -1
+                global_variables.x_prev = global_variables.x_0
+                global_variables.y_prev = global_variables.y_0
+                continue
+            else:
+                global_variables.ai_i += 1
+                continue
         else:
             valid = True
 
