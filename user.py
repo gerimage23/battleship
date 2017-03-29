@@ -1,7 +1,7 @@
 from display import *
 
 
-def ship_name(board_cell):
+def ship_names(board_cell):
     if board_cell == ship_color("A"):
         ship_name = "Aircraft Carrier"
     elif board_cell == ship_color("B"):
@@ -75,7 +75,7 @@ def user_move(board, ships_data, player, player_2):
         # checking
         elif board_cell != "#":
             # Get ship_name from the hit cell
-            ship_name = ship_name(board_cell)
+            ship_name = ship_names(board_cell)
             clear()
             print("\nYou hit a ship")
             board[guess_row][guess_col] = ship_color("0")

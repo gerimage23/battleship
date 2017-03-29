@@ -24,17 +24,17 @@ def validate(board, ship, x, y, ori):
 def v_or_h():
     # get ship orientation from user
     while(True):
-        user_input = input("Vertical or horizontal (v,h) ? ")
+        user_input = input("Would you like to place your ship vertically or horizontally? (v,h): ")
         if user_input == "v" or user_input == "h":
             return user_input
         else:
-            print("Invalid input. Please only enter v or h")
+            print("Invalid input. Please only enter v or h!")
 
 
 def get_coor():
     valid = False
     while not valid:
-        user_input = input("Please enter coordinates (row,col) ? ")
+        user_input = input("Please enter coordinates (row,col): ")
         try:
             # see that user entered 2 values seprated by comma
             coor = user_input.split(",")
