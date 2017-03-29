@@ -4,10 +4,10 @@ from subprocess import call
 
 
 ships = {"Aircraft Carrier": 5,
-            "Battleship": 4,
-            "Submarine": 3,
-            "Destroyer": 3,
-            "Patrol Boat": 2}
+         "Battleship": 4,
+         "Submarine": 3,
+         "Destroyer": 3,
+         "Patrol Boat": 2}
 
 
 def clear():

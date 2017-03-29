@@ -15,7 +15,7 @@ global direction
 global next_cell
 
 
-def computer_move(board, ships_data):
+def computer_move(board, ships_data, player, player_2):
     valid = False
     while not valid:
         x = random.randint(1, 10) - 1
@@ -89,7 +89,7 @@ def computer_move(board, ships_data):
     return board
 
 
-def computer_ai(board, ships_data):
+def computer_ai(board, ships_data, player, player_2):
 
     if hit_again == 0:
         x_prev = x_0

@@ -89,14 +89,14 @@ def main():
         # user move
         if player != "Computer":
             print_board(player, player_2, None, board_enemy)
-            board_enemy = user_move(board_enemy, ships_data)
+            board_enemy = user_move(board_enemy, ships_data, player, player_2)
 
         # computer move
         if player == "Computer":
             if hit == 0:
-                board_enemy = computer_move(board_enemy, ships_data)
+                board_enemy = computer_move(board_enemy, ships_data, player, player_2)
             else:
-                board_enemy = computer_ai(board_enemy, ships_data)
+                board_enemy = computer_ai(board_enemy, ships_data, player, player_2)
 
     # winner?
         if board_enemy == "WIN":

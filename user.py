@@ -1,7 +1,7 @@
 from display import *
 
 
-def user_move(board, ships_data):
+def user_move(board, ships_data, player, player_2):
     # Ask a coordinate
     valid = False
     while not valid:
@@ -71,7 +71,7 @@ def user_move(board, ships_data):
                             # if board_enemy[i][j] == board_cell:
                             board[i][j] = red(ship_data[0][0][0])
                         ships_data.remove(ship_data)
-                print_board(None, board)
+                print_board(player, player_2, None, board)
 
                 # Check if this was the last ship -> WIN
                 if check_win(board, ships_data):
@@ -79,7 +79,7 @@ def user_move(board, ships_data):
 
                 input('\nPress ENTER to continue')
                 return
-            print_board(None, board)
+            print_board(player, player_2, None, board)
             input('\nPress ENTER to continue')
             return
 
@@ -88,17 +88,11 @@ def user_move(board, ships_data):
             clear()
             print("\nYou missed.")
             board[guess_row][guess_col] = green("x")
-        print_board(None, board)
+        print_board(player, player_2, None, board)
         input('\nPress ENTER to continue')
 
 
 def check_win(board, ships_data):
-
-    # if ships data is empty -> WIN
-    # for i in range(10):
-    #     for j in range(10):
-    #         if board[i][j] != "#" and board[i][j] != green('x') and board[i][j] != red('0'):
-    #             return False
     if ships_data:
         return False
     return True
