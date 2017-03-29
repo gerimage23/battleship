@@ -4,13 +4,24 @@ from display import *
 from user import check_win
 
 
+global ai_i
+global x_prev
+global y_prev
+global hit
+global x_0
+global y_0
+global hit_again
+global direction
+global next_cell
+
+
 def computer_move(board, ships_data):
     valid = False
     while not valid:
         x = random.randint(1, 10) - 1
         y = random.randint(1, 10) - 1
 
-        board_cell = board_enemy[x][y]
+        board_cell = board[x][y]
         # Is this cell a new one?
 
         if board_cell == green("x") or board_cell == red('0') or  board_cell == ship_color("0") or \
@@ -34,7 +45,7 @@ def computer_move(board, ships_data):
         elif board_cell == ship_color("P"):
             ship_name = "Patrol Boat"
         print("\nComputer hit a ship")
-        board_enemy[x][y] = ship_color("0")
+        board[x][y] = ship_color("0")
         global hit
         hit = 1
         global x_0
@@ -43,8 +54,8 @@ def computer_move(board, ships_data):
         y_0 = y
 
         # mark cell as hit and check if sunk
-        board_enemy[-1][ship_name] -= 1
-        if board_enemy[-1][ship_name] == 0:
+        board[-1][ship_name] -= 1
+        if board[-1][ship_name] == 0:
             print("\nPlayer 1's" + ship_name + "sunk!")
 
             # Color ship to red
@@ -53,42 +64,32 @@ def computer_move(board, ships_data):
                     for coords in ship_data[1:]:
                         i = coords[0]
                         j = coords[1]
-                        # if board_enemy[i][j] == board_cell:
-                        board_enemy[i][j] = red(ship_data[0][0][0])
+                        board[i][j] = red(ship_data[0][0][0])
                     ships_data.remove(ship_data)
-            print_board(player, player_2, None, board_enemy)
+            print_board(player, player_2, None, board)
 
             # Check if this was the last ship -> WIN
-            if check_win(board_enemy, ships_data):
+            if check_win(board, ships_data):
                 return "WIN"
 
             input('\nPress ENTER to continue')
             return
-        print_board(player, player_2, None, board_enemy)
+        print_board(player, player_2, None, board)
         input('\nPress ENTER to continue')
         return
 
     # Missed
     else:
         print("\nMissed.")
-        board_enemy[x][y] = green("x")
+        board[x][y] = green("x")
         global hit
         hit = 0
-    print_board(player, player_2, None, board_enemy)
+    print_board(player, player_2, None, board)
     input('\nPress ENTER to continue')
     return board
 
 
 def computer_ai(board, ships_data):
-    global ai_i
-    global x_prev
-    global y_prev
-    global hit
-    global x_0
-    global y_0
-    global hit_again
-    global direction
-    global next_cell
 
     if hit_again == 0:
         x_prev = x_0
