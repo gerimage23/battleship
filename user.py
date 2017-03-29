@@ -15,16 +15,15 @@ def ship_names(board_cell):
     return ship_name
 
 
-def ship_color_to_red(ships_data):
+def ship_color_to_red(ships_data, ship_name):
     for ship_data in ships_data:
-        if ship_data[0][0] == ship_names:
+        if ship_data[0][0] == ship_name:
             for coords in ship_data[1:]:
                 i = coords[0]
                 j = coords[1]
                 # if board_enemy[i][j] == board_cell:
                 board[i][j] = red(ship_data[0][0][0])
             ships_data.remove(ship_data)
-    print_board(player, player_2, None, board)
 
 
 def is_cell_not_empty(board_cell):
@@ -86,7 +85,8 @@ def user_move(board, ships_data, player, player_2):
                 print("\n" + ship_name + " sunk!")
 
                 # Color ship to red
-                ship_color_to_red(ships_data)
+                ship_color_to_red(ships_data, ship_name)
+                print_board(player, player_2, None, board)
 
                 # Check if this was the last ship -> WIN
                 if check_win(board, ships_data):
