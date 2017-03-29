@@ -17,7 +17,7 @@ def ship_names(board_cell):
 
 def ship_color_to_red(ships_data):
     for ship_data in ships_data:
-        if ship_data[0][0] == ship_name:
+        if ship_data[0][0] == ship_names:
             for coords in ship_data[1:]:
                 i = coords[0]
                 j = coords[1]
