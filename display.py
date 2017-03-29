@@ -18,7 +18,7 @@ def clear():
 
 def print_board(player, player_2, board_you=None, board_enemy=None):
     ships = global_variables.ships
-    if board_you != None:
+    if board_you:
         if player != "Computer":
             print('\n' + player + "'s board")
             print('\n   ', end='')
@@ -30,7 +30,7 @@ def print_board(player, player_2, board_you=None, board_enemy=None):
                     break
                 print("{0:2d} {1}".format(i + 1, " ".join(j)))
 
-    if board_enemy != None:
+    if board_enemy:
         if player_2 == "Computer" and player != player_2:
             print('\nComputer\'s board')
         elif player != "Computer":

@@ -1,23 +1,42 @@
 import random
 
 from display import *
+from global_variables import next_cell
 
 
 def validate(board, ship, x, y, ori):
     # validate the ship can be placed at given coordinates
-    if ori == "v" and x + ship > 10:
-        return False
-    elif ori == "h" and y + ship > 10:
-        return False
-    else:
+    for next_x, next_y in next_cell:
+        x_n = x + next_x
+        y_n = y + next_y
         if ori == "v":
-            for i in range(ship):
-                if board[x + i][y] != "#":
-                    return False
-        elif ori == "h":
-            for i in range(ship):
-                if board[x][y + i] != "#":
-                    return False
+            if x_n + ship > 9:
+                x_n = x
+        if x_n < 0:
+            x_n = 0
+        elif x_n > 9:
+            x_n = 9
+        if ori == "h":
+            if y_n + ship > 9:
+                y_n = y
+        if y_n < 0:
+            y_n = 0
+        elif y_n > 9:
+            y_n = 9
+
+        if ori == "v" and x + ship > 9:
+            return False
+        elif ori == "h" and y + ship > 9:
+            return False
+        else:
+            if ori == "v":
+                for i in range(ship):
+                    if board[x_n + i][y_n] != "#":
+                        return False
+            elif ori == "h":
+                for i in range(ship):
+                    if board[x_n][y_n + i] != "#":
+                        return False
     return True
 
 
@@ -88,21 +107,7 @@ def computer_place_ships(board, ships, ships_data, player, player_2):
             else:
                 ori = "h"
 
-            next_cell = [[i, j] for i in range(-1, 2)
-                         for j in range(-1, 2) if abs(i + j) == 1]
-            for n in next_cell:
-                x_1 = x + n[0]
-                y_1 = y + n[1]
-                if x_1 < 0:
-                    x_1 = 0
-                if x_1 > 9:
-                    x_1 = 9
-                if y_1 < 0:
-                    y_1 = 1
-                if y_1 > 9:
-                    y_1 = 9
-
-                valid = validate(board, ships[ship], x_1, y_1, ori)
+            valid = validate(board, ships[ship], x, y, ori)
 
         # Place the ship
         print("\nThe Computer is placing a/an " + ship)
@@ -141,28 +146,17 @@ def user_place_ships(board, ships, ships_data, player, player_2):
             print("\nPlacing a/an " + ship)
             x, y = get_coor()
             ori = v_or_h()
-            next_cell = [[i, j] for i in range(-1, 2)
-                         for j in range(-1, 2) if abs(i + j) == 1]
-            for n in next_cell:
-                x_1 = x + n[0]
-                y_1 = y + n[1]
-                if x_1 < 0:
-                    x_1 = 0
-                if x_1 > 9:
-                    x_1 = 9
-                if y_1 < 0:
-                    y_1 = 1
-                if y_1 > 9:
-                    y_1 = 9
-                valid = validate(board, ships[ship], x_1, y_1, ori)
-                # valid = validate(board, ships[ship], x, y, ori)
-                if not valid:
-                    print(
-                        "Cannot place a ship there.\nThe ships cannot be placed that close to each other.\nPlease take a look at the board and try again.")
-                    input("Hit ENTER to continue")
-                    clear()
-                    print_board(player, player_2, board)
-                    break
+
+            valid = validate(board, ships[ship], x, y, ori)
+
+            if not valid:
+                print("Cannot place a ship there.)
+                print("The ships cannot be placed that close to each other.")
+                print("Please take a look at the board and try again.")
+                input("Hit ENTER to continue")
+                clear()
+                print_board(player, player_2, board)
+                # break
 
         row = []
         row.append([ship, ships[ship]])
