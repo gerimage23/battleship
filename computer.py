@@ -18,7 +18,7 @@ def computer_move(board, ships_data, player, player_2):
             continue
         else:
             valid = True
-
+    shoot_sound()
     # Checking hit
     if board_cell != "#":
 

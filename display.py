@@ -1,14 +1,15 @@
 
-from pygame import mixer
 import copy
 from subprocess import call
+import time
+import vlc
 
 import global_variables
 
 
 def shoot_sound():
-    mixer.music.load()
-    mixer.music.play()
+    s = vlc.MediaPlayer("sounds/shoot.wav")
+    s.play()
 
 
 def clear():

@@ -1,16 +1,12 @@
 import copy
-
 from display import *
 from place_ship import *
 from computer import *
 from user import *
-from pygame import mixer
-
 import global_variables
 
 
 def main():
-    mixer.init()
     game = True
     while game:
         valid = False

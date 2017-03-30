@@ -55,7 +55,7 @@ def user_move(board, ships_data, player, player_2):
 
         except Exception as e:
             print(e)
-
+    shoot_sound()
     # Out of range
     if (guess_row < 0 or guess_row > 9) or (guess_col < 0 or guess_col > 9):
         print("\nOops, that's not even in the ocean.")
