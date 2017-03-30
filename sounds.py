@@ -1,25 +1,8 @@
-# import vlc
-from pygame import mixer
+import subprocess
 
 
 def play_sound(file):
-    # mixer.pre_init(44100, -16, 2, 1024)
-    # mixer.init()
-    # mixer.music.load(file)
-    # mixer.music.play()
-
-    vlc.MediaPlayer(file).play()
-
-    # instance = vlc.Instance()
-    # player = instance.media_player_new()
-
-    # # Load the media file
-    # media = instance.media_new(file)
-
-    # # Add the media to the player
-    # player.set_media(media)
-
-    # player.play()
+    subprocess.Popen(['aplay', '-q', file])
 
 
 def intro_sound():
@@ -51,4 +34,4 @@ def computer_wins_sound():
 
 
 def player_wins_sound():
-    play_sound("sounds/player_win")
+    play_sound("sounds/player_win.wav")
