@@ -39,7 +39,7 @@ def print_board(player, player_2, board_you=None, board_enemy=None):
         for i in range(1, 11):
             print(i, end=' ')
         print('')
-        letters = [ship_color(ship[0]) for ship in ships.keys()]
+        letters = [ship_color(ship[0]) for ship in ships]
         for i, j in enumerate(board_enemy):
             if i > 9:
                 break

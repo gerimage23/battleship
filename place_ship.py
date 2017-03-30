@@ -103,7 +103,7 @@ def place_ship(board, ship, s, ori, x, y):
 
 # Code for the computer placing ships
 def computer_place_ships(board, ships, ships_data, player, player_2):
-    for ship in ships.keys():
+    for ship in ships:
         valid = False
         while(not valid):
 
@@ -120,8 +120,7 @@ def computer_place_ships(board, ships, ships_data, player, player_2):
 
         # Place the ship
         print("\nThe Computer is placing a/an " + ship)
-        place_ship(
-            board, ships[ship], ship_color(ship[0]), ori, x, y)
+        place_ship(board, ships[ship], ship_color(ship[0]), ori, x, y)
 
         row = []
         row.append([ship, ships[ship]])
@@ -145,7 +144,7 @@ def user_place_ships(board, ships, ships_data, player, player_2):
     clear()
     print_board(player, player_2, board)
     print("\n" + player + " - Place your ship")
-    for ship in ships.keys():
+    for ship in ships:
 
         # Get coordinates from user and validate the position
         valid = False
