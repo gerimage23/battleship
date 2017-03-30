@@ -45,7 +45,7 @@ def computer_move(board, ships_data, player, player_2):
             if check_win(board, ships_data):
                 return "WIN"
 
-            input('\nPress ENTER to continue')
+            time.sleep(2)
             return
         print_board(player, player_2, None, board)
         time.sleep(2)
@@ -120,7 +120,6 @@ def computer_ai(board, ships_data, player, player_2):
             if check_win(board, ships_data):
                 return "WIN"
 
-            input('\nPress ENTER to continue')
             return
         print_board(player, player_2, None, board)
         time.sleep(2)
