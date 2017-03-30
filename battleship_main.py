@@ -61,9 +61,9 @@ def main():
         clear()
         print(green("\nLet's play!"))
         winner = 0
-        turn = 0
+        count = 0
         while not winner:
-            turn += 1
+            count += 1
             if count % 2 != 0:
                 player = "Player 1"
             else:
@@ -77,7 +77,7 @@ def main():
                 board_you = user_2_board
                 board_enemy = user_1_board
                 ships_data = ships_data_1
-
+            turn = (count + 1) // 2
             print("\nTurn {}, {}".format(turn, player))
 
             # User move
