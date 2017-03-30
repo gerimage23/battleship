@@ -64,7 +64,7 @@ def main():
         turn = 0
         while not winner:
             turn += 1
-            if turn % 2 != 0:
+            if count % 2 != 0:
                 player = "Player 1"
             else:
                 player = player_2
@@ -88,9 +88,9 @@ def main():
             # Computer move
             if player == "Computer":
                 if global_variables.hit == 0:
-                    board_enemy = computer_move(board_enemy, ships_data, player, player_2)
+                    board_enemy = computer_move(board_enemy, ships_data, player, player_2, turn)
                 else:
-                    board_enemy = computer_ai(board_enemy, ships_data, player, player_2)
+                    board_enemy = computer_ai(board_enemy, ships_data, player, player_2, turn)
 
             # Winner?
             if board_enemy == "WIN":

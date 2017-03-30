@@ -6,7 +6,12 @@ from sounds import *
 from user import check_win, ship_names, is_cell_not_empty, ship_color_to_red
 
 
-def computer_move(board, ships_data, player, player_2):
+def computer_move(board, ships_data, player, player_2, turn):
+    print("\nComputer is aiming...")
+    print_board(player, player_2, None, board)
+    time.sleep(2)
+    clear()
+    print("\nTurn {}, {}".format(turn, player))
 
     valid = False
     while not valid:
@@ -61,7 +66,12 @@ def computer_move(board, ships_data, player, player_2):
     return board
 
 
-def computer_ai(board, ships_data, player, player_2):
+def computer_ai(board, ships_data, player, player_2, turn):
+    print("\nComputer is aiming...")
+    print_board(player, player_2, None, board)
+    time.sleep(2)
+    clear()
+    print("\nTurn {}, {}".format(turn, player))
 
     if global_variables.hit_again == 0:
         global_variables.x_prev = global_variables.x_0
