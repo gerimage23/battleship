@@ -1,5 +1,6 @@
 import random
 
+import time
 from display import *
 from sounds import *
 from user import check_win, ship_names, is_cell_not_empty, ship_color_to_red
@@ -39,15 +40,15 @@ def computer_move(board, ships_data, player, player_2):
             # Color ship to red
             ship_color_to_red(ships_data, ship_name, board)
             print_board(player, player_2, None, board)
-
+            time.sleep(2)
             # Check if this was the last ship -> WIN
             if check_win(board, ships_data):
                 return "WIN"
 
-            input('\nPress ENTER to continue')
+            time.sleep(2)
             return
         print_board(player, player_2, None, board)
-        input('\nPress ENTER to continue')
+        time.sleep(2)
         return
 
     # Missed
@@ -56,7 +57,7 @@ def computer_move(board, ships_data, player, player_2):
         board[x][y] = green("x")
         global_variables.hit = 0
     print_board(player, player_2, None, board)
-    input('\nPress ENTER to continue')
+    time.sleep(2)
     return board
 
 
@@ -114,15 +115,14 @@ def computer_ai(board, ships_data, player, player_2):
             # Color ship to red
             ship_color_to_red(ships_data, ship_name, board)
             print_board(player, player_2, None, board)
-
+            time.sleep(2)
             # Check if this was the last ship -> WIN
             if check_win(board, ships_data):
                 return "WIN"
 
-            input('\nPress ENTER to continue')
             return
         print_board(player, player_2, None, board)
-        input('\nPress ENTER to continue')
+        time.sleep(2)
         return
 
     # Missed
@@ -136,5 +136,5 @@ def computer_ai(board, ships_data, player, player_2):
         else:
             global_variables.ai_i += 1
     print_board(player, player_2, None, board)
-    input('\nPress ENTER to continue')
+    time.sleep(2)
     return board

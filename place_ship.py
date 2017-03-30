@@ -1,5 +1,6 @@
 import random
 
+import time
 from display import *
 from sounds import *
 from global_variables import next_cell
