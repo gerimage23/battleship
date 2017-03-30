@@ -4,6 +4,8 @@ from display import *
 from sounds import *
 from global_variables import next_cell
 
+import time
+
 
 def validate(board, ship, x, y, ori):
     # Check if the ship can be placed at given coordinates
@@ -128,7 +130,7 @@ def computer_place_ships(board, ships, ships_data, player, player_2):
                 row.append([x, y + s])
             ships_data.append(row)
 
-        input('\nPress ENTER to continue')
+        time.sleep(0.5)
 
     return board
 
