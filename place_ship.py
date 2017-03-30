@@ -87,15 +87,15 @@ def get_coor():
             print(e)
 
 
-# Placing ships
-def place_ship(board, ship, s, ori, x, y):
+# Placing ships to the board
+def place_ship(board, ship_size, s, ori, x, y):
 
     # Place the ship based on orientation
     if ori == "v":
-        for i in range(ship):
+        for i in range(ship_size):
             board[x + i][y] = s
     elif ori == "h":
-        for i in range(ship):
+        for i in range(ship_size):
             board[x][y + i] = s
 
     place_ship_sound()
@@ -104,6 +104,7 @@ def place_ship(board, ship, s, ori, x, y):
 # Code for the computer placing ships
 def computer_place_ships(board, ships, ships_data, player, player_2):
     for ship in ships:
+        ship_size = ships[ship]
         valid = False
         while(not valid):
 
@@ -116,21 +117,21 @@ def computer_place_ships(board, ships, ships_data, player, player_2):
             else:
                 ori = "h"
 
-            valid = validate(board, ships[ship], x, y, ori)
+            valid = validate(board, ship_size, x, y, ori)
 
         # Place the ship
         print("\nThe Computer is placing a/an " + ship)
-        place_ship(board, ships[ship], ship_color(ship[0]), ori, x, y)
+        place_ship(board, ship_size, ship_color(ship[0]), ori, x, y)
 
         row = []
-        row.append([ship, ships[ship]])
+        row.append([ship, ship_size])
         # Append coords to ships data
         if ori == "v":
-            for s in range(ships[ship]):
+            for s in range(ship_size):
                 row.append([x + s, y])
             ships_data.append(row)
         elif ori == "h":
-            for s in range(ships[ship]):
+            for s in range(ship_size):
                 row.append([x, y + s])
             ships_data.append(row)
 
@@ -145,7 +146,7 @@ def user_place_ships(board, ships, ships_data, player, player_2):
     print_board(player, player_2, board)
     print("\n" + player + " - Place your ship")
     for ship in ships:
-
+        ship_size = ships[ship]
         # Get coordinates from user and validate the position
         valid = False
         while(not valid):
@@ -154,7 +155,7 @@ def user_place_ships(board, ships, ships_data, player, player_2):
             x, y = get_coor()
             ori = v_or_h()
 
-            valid = validate(board, ships[ship], x, y, ori)
+            valid = validate(board, ship_size, x, y, ori)
 
             if not valid:
                 print("Cannot place a ship there.")
@@ -165,19 +166,19 @@ def user_place_ships(board, ships, ships_data, player, player_2):
                 print_board(player, player_2, board)
 
         row = []
-        row.append([ship, ships[ship]])
+        row.append([ship, ship_size])
         # Append coords to ships data
         if ori == "v":
-            for s in range(ships[ship]):
+            for s in range(ship_size):
                 row.append([x + s, y])
             ships_data.append(row)
         elif ori == "h":
-            for s in range(ships[ship]):
+            for s in range(ship_size):
                 row.append([x, y + s])
             ships_data.append(row)
 
         # Place the ship
-        place_ship(board, ships[ship], ship_color(ship[0]), ori, x, y)
+        place_ship(board, ship_size, ship_color(ship[0]), ori, x, y)
         clear()
         print_board(player, player_2, board)
 
