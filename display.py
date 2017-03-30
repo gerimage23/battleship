@@ -1,15 +1,7 @@
-
 import copy
 from subprocess import call
-import time
-import vlc
 
 import global_variables
-
-
-def shoot_sound():
-    s = vlc.MediaPlayer("sounds/shoot.wav")
-    s.play()
 
 
 def clear():

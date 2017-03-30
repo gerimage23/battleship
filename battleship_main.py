@@ -1,8 +1,10 @@
 import copy
+
 from display import *
 from place_ship import *
 from computer import *
 from user import *
+from sounds import *
 import global_variables
 
 
@@ -10,6 +12,8 @@ def main():
     game = True
     while game:
         valid = False
+
+        intro_sound()
 
         # Choose your enemy
         clear()
@@ -95,6 +99,11 @@ def main():
                 clear()
 
         print("\n" + player + " won!!!\n")
+
+        if player == "Computer":
+            computer_wins_sound()
+        else:
+            player_wins_sound()
 
         answer = 0
         while not answer:

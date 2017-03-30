@@ -1,8 +1,10 @@
-ships = {"Aircraft Carrier": 5,
-         "Battleship": 4,
-         "Submarine": 3,
-         "Destroyer": 3,
-         "Patrol Boat": 2
+# ships = {"Aircraft Carrier": 5,
+#          "Battleship": 4,
+#          "Submarine": 3,
+#          "Destroyer": 3,
+#          "Patrol Boat": 2
+#          }
+ships = {"Aircraft Carrier": 5
          }
 x_0 = 0
 y_0 = 0

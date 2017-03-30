@@ -1,6 +1,7 @@
 import random
 
 from display import *
+from sounds import *
 from global_variables import next_cell
 
 
@@ -74,6 +75,7 @@ def get_coor():
             return coor
 
         except ValueError:
+            place_ship_sound()
             print("Try giving numbers.")
         except Exception as e:
             print(e)
@@ -89,6 +91,8 @@ def place_ship(board, ship, s, ori, x, y):
     elif ori == "h":
         for i in range(ship):
             board[x][y + i] = s
+
+    place_ship_sound()
 
 
 def computer_place_ships(board, ships, ships_data, player, player_2):

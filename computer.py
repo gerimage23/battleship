@@ -1,6 +1,7 @@
 import random
 
 from display import *
+from sounds import *
 from user import check_win, ship_names, is_cell_not_empty, ship_color_to_red
 
 
@@ -21,7 +22,7 @@ def computer_move(board, ships_data, player, player_2):
     shoot_sound()
     # Checking hit
     if board_cell != "#":
-
+        hit_sound()
         ship_name = ship_names(board_cell)
         print("\nComputer hit a ship")
         board[x][y] = ship_color("0")
@@ -93,7 +94,7 @@ def computer_ai(board, ships_data, player, player_2):
 
     # Checking hit
     if board_cell != "#":
-
+        hit_sound()
         ship_name = ship_names(board_cell)
         print("\nComputer hit a ship")
         board[x][y] = ship_color("0")
@@ -126,6 +127,7 @@ def computer_ai(board, ships_data, player, player_2):
 
     # Missed
     else:
+        shoot_sound()
         print("\nMissed.")
         board[x][y] = green("x")
 

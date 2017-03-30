@@ -1,4 +1,5 @@
 from display import *
+from sounds import *
 
 
 def ship_names(board_cell):
@@ -16,6 +17,7 @@ def ship_names(board_cell):
 
 
 def ship_color_to_red(ships_data, ship_name, board):
+    ship_sunk_sound()
     for ship_data in ships_data:
         if ship_data[0][0] == ship_name:
             for coords in ship_data[1:]:
@@ -55,9 +57,10 @@ def user_move(board, ships_data, player, player_2):
 
         except Exception as e:
             print(e)
-    shoot_sound()
+
     # Out of range
     if (guess_row < 0 or guess_row > 9) or (guess_col < 0 or guess_col > 9):
+        wrong_coords_sound()
         print("\nOops, that's not even in the ocean.")
         input('\nPress ENTER to continue')
         return
@@ -66,6 +69,7 @@ def user_move(board, ships_data, player, player_2):
 
         # Is this cell a new one?
         if is_cell_not_empty(board_cell):
+            wrong_coords_sound()
             print("\nYou guessed that one already.")
             input('\nPress ENTER to continue')
             return
@@ -75,6 +79,7 @@ def user_move(board, ships_data, player, player_2):
             # Get ship_name from the hit cell
             ship_name = ship_names(board_cell)
             clear()
+            hit_sound()
             print("\nYou hit a ship")
             board[guess_row][guess_col] = ship_color("0")
 
@@ -100,6 +105,7 @@ def user_move(board, ships_data, player, player_2):
         # Missed
         else:
             clear()
+            shoot_sound()
             print("\nYou missed.")
             board[guess_row][guess_col] = green("x")
         print_board(player, player_2, None, board)
