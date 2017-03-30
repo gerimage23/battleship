@@ -5,7 +5,7 @@ from global_variables import next_cell
 
 
 def validate(board, ship, x, y, ori):
-    # validate the ship can be placed at given coordinates
+    # Check if the ship can be placed at given coordinates
     for next_x, next_y in next_cell:
         x_n = x + next_x
         y_n = y + next_y
@@ -41,7 +41,7 @@ def validate(board, ship, x, y, ori):
 
 
 def v_or_h():
-    # get ship orientation from user
+    # Get ship orientation from user
     while(True):
         user_input = input("Would you like to place your ship vertically or horizontally? (v,h): ")
         if user_input == "v" or user_input == "h":
@@ -55,22 +55,22 @@ def get_coor():
     while not valid:
         user_input = input("Please enter coordinates (row,col): ")
         try:
-            # see that user entered 2 values seprated by comma
+            # Ckeck if user entered 2 values seprated by comma
             coor = user_input.split(",")
             if len(coor) != 2:
                 raise Exception("Invalid entry, too few/many coordinates.")
 
-            # check that 2 values are integers
+            # Check that 2 values are integers
             coor[0] = int(coor[0]) - 1
             coor[1] = int(coor[1]) - 1
 
-            # check that values of integers are between 1 and 10 for both
+            # Check that values of integers are between 1 and 10 for both
             # coordinates
             if coor[0] > 9 or coor[0] < 0 or coor[1] > 9 or coor[1] < 0:
                 raise Exception(
                     "Invalid entry. Please use values between 1 to 10 only.")
 
-            # if everything is ok, return coordinates
+            # If everything is ok, return coordinates
             return coor
 
         except ValueError:
@@ -82,7 +82,7 @@ def get_coor():
 # Placing ships
 def place_ship(board, ship, s, ori, x, y):
 
-    # place ship based on orientation
+    # Place the ship based on orientation
     if ori == "v":
         for i in range(ship):
             board[x + i][y] = s
@@ -136,7 +136,7 @@ def user_place_ships(board, ships, ships_data, player, player_2):
     print("\n" + player + " - Place your ship")
     for ship in ships.keys():
 
-        # get coordinates from user and validate the postion
+        # Get coordinates from user and validate the postion
         valid = False
         while(not valid):
 
@@ -166,7 +166,7 @@ def user_place_ships(board, ships, ships_data, player, player_2):
                 row.append([x, y + s])
             ships_data.append(row)
 
-        # place the ship
+        # Place the ship
         place_ship(board, ships[ship], ship_color(ship[0]), ori, x, y)
         clear()
         print_board(player, player_2, board)

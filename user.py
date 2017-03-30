@@ -39,12 +39,12 @@ def user_move(board, ships_data, player, player_2):
     while not valid:
         user_input = input("\nGuess coordinates (row, col): ")
         try:
-            # see that user entered 2 values seprated by comma
+            # Ckeck if the user entered 2 values seprated by comma
             coor = user_input.split(",")
             if len(coor) != 2:
                 raise Exception("Invalid entry, too few/many coordinates.")
 
-            # check that 2 values are integers
+            # Check that 2 values are integers
             guess_row = int(coor[0]) - 1
             guess_col = int(coor[1]) - 1
 
@@ -70,7 +70,7 @@ def user_move(board, ships_data, player, player_2):
             input('\nPress ENTER to continue')
             return
 
-        # checking hit
+        # Checking hit
         elif board_cell != "#":
             # Get ship_name from the hit cell
             ship_name = ship_names(board_cell)

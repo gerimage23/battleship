@@ -1,4 +1,3 @@
-# global variables
 ships = {"Aircraft Carrier": 5,
          "Battleship": 4,
          "Submarine": 3,

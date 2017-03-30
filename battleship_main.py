@@ -9,11 +9,12 @@ import global_variables
 
 
 def main():
-    # Choose your enemy
+
     game = True
     while game:
         valid = False
 
+        # Choose your enemy
         clear()
         while not valid:
             userinput = input(
@@ -36,15 +37,15 @@ def main():
         ships_data_1 = []
         ships_data_2 = []
 
-        # setup players' boards
+        # Setup players' boards
         user_1_board = copy.deepcopy(board)
         user_2_board = copy.deepcopy(board)
 
-        # add ships as last element in the array
+        # Add ships as last element in the array
         user_1_board.append(copy.deepcopy(ships))
         user_2_board.append(copy.deepcopy(ships))
 
-        # ship placement
+        # Ship placement
         player = "Player 1"
         user_1_board = user_place_ships(user_1_board, ships, ships_data_1, player, player_2)
         clear()
@@ -55,7 +56,7 @@ def main():
             player = "Computer"
             user_2_board = computer_place_ships(user_2_board, ships, ships_data_2, player, player_2)
 
-        # game begins
+        # Game begins
         clear()
         print(green("\nLet's play!"))
         winner = 0
@@ -78,19 +79,19 @@ def main():
 
             print("\nTurn {}, {}".format(turn, player))
 
-            # user move
+            # User move
             if player != "Computer":
                 print_board(player, player_2, None, board_enemy)
                 board_enemy = user_move(board_enemy, ships_data, player, player_2)
 
-            # computer move
+            # Computer move
             if player == "Computer":
                 if global_variables.hit == 0:
                     board_enemy = computer_move(board_enemy, ships_data, player, player_2)
                 else:
                     board_enemy = computer_ai(board_enemy, ships_data, player, player_2)
 
-            # winner?
+            # Winner?
             if board_enemy == "WIN":
                 winner = player
             else:
