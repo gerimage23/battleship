@@ -11,12 +11,12 @@ import global_variables
 def main():
     game = True
     while game:
-        valid = False
 
         intro_sound()
+        clear()
 
         # Choose your enemy
-        clear()
+        valid = False
         while not valid:
             userinput = input(
                 "\nPlease select whether you are playing against another player or the computer(p or c): ")
