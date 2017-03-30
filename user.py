@@ -2,6 +2,7 @@ from display import *
 from sounds import *
 
 
+# Defines the letters corresponding to the relevant ships
 def ship_names(board_cell):
     if board_cell == ship_color("A"):
         ship_name = "Aircraft Carrier"
@@ -16,6 +17,7 @@ def ship_names(board_cell):
     return ship_name
 
 
+# Changes the sunk ship color's to red
 def ship_color_to_red(ships_data, ship_name, board):
     ship_sunk_sound()
     for ship_data in ships_data:
@@ -27,6 +29,7 @@ def ship_color_to_red(ships_data, ship_name, board):
             ships_data.remove(ship_data)
 
 
+# Checks whether or not the targeted cell is reserved
 def cell_is_reserved(board_cell):
     if board_cell == green("x") or board_cell == ship_color("0") or \
             board_cell == red('A') or board_cell == red('B') or \
@@ -35,8 +38,9 @@ def cell_is_reserved(board_cell):
     return False
 
 
+# Code for the user shots on the board
 def user_move(board, ships_data, player, player_2):
-    # Ask a coordinate
+    # Ask for a coordinate
     valid = False
     while not valid:
         user_input = input("\nGuess coordinates (row, col): ")
@@ -112,6 +116,7 @@ def user_move(board, ships_data, player, player_2):
         input('\nPress ENTER to continue')
 
 
+# Checks if the winning condition has been met or not
 def check_win(board, ships_data):
     if ships_data:
         return False

@@ -15,6 +15,7 @@ def clear():
                                                                                                          ''')
 
 
+# Printing the gameboard
 def print_board(player, player_2, board_you=None, board_enemy=None):
     ships = global_variables.ships
     if board_you:

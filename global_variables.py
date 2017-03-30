@@ -1,3 +1,4 @@
+# Ship names and length
 ships = {"Aircraft Carrier": 5,
          "Battleship": 4,
          "Submarine": 3,
@@ -20,9 +21,9 @@ hit_again = 0
 # The matrix to shoot around the origo after a ship hit
 next_cell = [[1, 0], [0, 1], [-1, 0], [0, -1]]
 
-# Index of the matrix. Its value grow by 1 until computer not hit again
+# Index of the matrix. Its value grows by 1 until computer does not hit again
 ai_i = 0
 
 # The multiplexer of the next cell computing expression. Its value changes
-# to -1 if computer find the end of the ship but not it has not been sunk
+# to -1 if the computer misses a shot after hitting to one direction.
 direction = 1

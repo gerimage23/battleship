@@ -8,6 +8,7 @@ from global_variables import next_cell
 import time
 
 
+# Checks whether or not the ship can be placed to the cell provided by either the user or the computer
 def validate(board, ship, x, y, ori):
     # Check if the ship can be placed at given coordinates
     for next_x, next_y in next_cell:
@@ -44,6 +45,7 @@ def validate(board, ship, x, y, ori):
     return True
 
 
+# The function asking for player input regarding whether or not the ships should be placed vertically or horizontally.
 def v_or_h():
     # Get ship orientation from user
     while(True):
@@ -54,6 +56,7 @@ def v_or_h():
             print("Invalid input. Please only enter v or h!")
 
 
+# Getting the coordinates from the user
 def get_coor():
     valid = False
     while not valid:
@@ -98,6 +101,7 @@ def place_ship(board, ship, s, ori, x, y):
     place_ship_sound()
 
 
+# Code for the computer placing ships
 def computer_place_ships(board, ships, ships_data, player, player_2):
     for ship in ships.keys():
         valid = False
@@ -136,7 +140,7 @@ def computer_place_ships(board, ships, ships_data, player, player_2):
     return board
 
 
-# Asking ship's coordinate from player
+# Asking for ship's coordinate from player
 def user_place_ships(board, ships, ships_data, player, player_2):
     clear()
     print_board(player, player_2, board)

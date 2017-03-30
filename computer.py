@@ -6,6 +6,7 @@ from sounds import *
 from user import check_win, ship_names, cell_is_reserved, ship_color_to_red
 
 
+# Computer randomly shooting until it hits a ship
 def computer_random(board, ships_data, player, player_2, turn):
     print("\nComputer is aiming...")
     print_board(player, player_2, None, board)
@@ -66,6 +67,7 @@ def computer_random(board, ships_data, player, player_2, turn):
     return board
 
 
+# Defines the computer's behavior after a succesful hit
 def computer_ai(board, ships_data, player, player_2, turn):
     print("\nComputer is aiming...")
     print_board(player, player_2, None, board)
