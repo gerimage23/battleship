@@ -11,23 +11,23 @@ def validate(board, ship, x, y, ori):
         x_n = x + next_x
         y_n = y + next_y
         if ori == "v":
-            if x_n + ship > 9:
+            if x_n + ship > 10:
                 x_n = x
         if x_n < 0:
             x_n = 0
         elif x_n > 9:
             x_n = 9
         if ori == "h":
-            if y_n + ship > 9:
+            if y_n + ship > 10:
                 y_n = y
         if y_n < 0:
             y_n = 0
         elif y_n > 9:
             y_n = 9
 
-        if ori == "v" and x + ship > 9:
+        if ori == "v" and x + ship > 10:
             return False
-        elif ori == "h" and y + ship > 9:
+        elif ori == "h" and y + ship > 10:
             return False
         else:
             if ori == "v":
