@@ -1,8 +1,14 @@
 
+from pygame import mixer
 import copy
 from subprocess import call
 
 import global_variables
+
+
+def shoot_sound():
+    mixer.music.load()
+    mixer.music.play()
 
 
 def clear():
