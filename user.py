@@ -27,7 +27,7 @@ def ship_color_to_red(ships_data, ship_name, board):
             ships_data.remove(ship_data)
 
 
-def is_cell_not_empty(board_cell):
+def cell_is_reserved(board_cell):
     if board_cell == green("x") or board_cell == ship_color("0") or \
             board_cell == red('A') or board_cell == red('B') or \
             board_cell == red('S') or board_cell == red('D') or board_cell == red('P'):
@@ -68,7 +68,7 @@ def user_move(board, ships_data, player, player_2):
         board_cell = board[guess_row][guess_col]
 
         # Is this cell a new one?
-        if is_cell_not_empty(board_cell):
+        if cell_is_reserved(board_cell):
             wrong_coords_sound()
             print("\nYou guessed that one already.")
             input('\nPress ENTER to continue')
