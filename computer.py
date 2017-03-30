@@ -6,7 +6,7 @@ from sounds import *
 from user import check_win, ship_names, cell_is_reserved, ship_color_to_red
 
 
-def computer_move(board, ships_data, player, player_2, turn):
+def computer_random(board, ships_data, player, player_2, turn):
     print("\nComputer is aiming...")
     print_board(player, player_2, None, board)
     time.sleep(2)

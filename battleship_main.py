@@ -88,7 +88,7 @@ def main():
             # Computer move
             if player == "Computer":
                 if global_variables.hit == 0:
-                    board_enemy = computer_move(board_enemy, ships_data, player, player_2, turn)
+                    board_enemy = computer_random(board_enemy, ships_data, player, player_2, turn)
                 else:
                     board_enemy = computer_ai(board_enemy, ships_data, player, player_2, turn)
 
