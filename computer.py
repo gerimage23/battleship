@@ -12,14 +12,14 @@ def computer_move(board, ships_data, player, player_2):
         y = random.randint(1, 10) - 1
 
         board_cell = board[x][y]
-        # Is this cell a new one?
 
+        # Is this cell a new one?
         if is_cell_not_empty(board_cell):
             continue
         else:
             valid = True
 
-    # checking
+    # checking hit
     if board_cell != "#":
 
         ship_name = ship_names(board_cell)
@@ -77,8 +77,8 @@ def computer_ai(board, ships_data, player, player_2):
                 global_variables.ai_i += 1
             continue
         board_cell = board[x][y]
-        # Is this cell a new one?
 
+        # Is this cell a new one?
         if is_cell_not_empty(board_cell):
             if global_variables.hit_again == 1:
                 global_variables.direction *= -1
@@ -91,7 +91,7 @@ def computer_ai(board, ships_data, player, player_2):
         else:
             valid = True
 
-    # checking
+    # checking hit
     if board_cell != "#":
 
         ship_name = ship_names(board_cell)

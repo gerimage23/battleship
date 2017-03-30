@@ -21,7 +21,6 @@ def ship_color_to_red(ships_data, ship_name, board):
             for coords in ship_data[1:]:
                 i = coords[0]
                 j = coords[1]
-                # if board_enemy[i][j] == board_cell:
                 board[i][j] = red(ship_data[0][0][0])
             ships_data.remove(ship_data)
 
@@ -71,7 +70,7 @@ def user_move(board, ships_data, player, player_2):
             input('\nPress ENTER to continue')
             return
 
-        # checking
+        # checking hit
         elif board_cell != "#":
             # Get ship_name from the hit cell
             ship_name = ship_names(board_cell)

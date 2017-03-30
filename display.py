@@ -59,12 +59,10 @@ def red(string):
 def green(string):
     # Change the color of the string to green
     char = '\x1b[6;30;42m' + string + '\x1b[0m'
-    # char = "\033[92m" + string + "\033[00m"
     return char
 
 
 def ship_color(string):
     # Change the color of the ship
     char = '\x1b[1;34;40m' + string + '\x1b[0m'
-    # char = "\033[92m" + string + "\033[00m"
     return char
