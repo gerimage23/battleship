@@ -143,7 +143,7 @@ def user_place_ships(board, ships, ships_data, player, player_2):
     print("\n" + player + " - Place your ship")
     for ship in ships.keys():
 
-        # Get coordinates from user and validate the postion
+        # Get coordinates from user and validate the position
         valid = False
         while(not valid):
 

@@ -37,7 +37,7 @@ def computer_move(board, ships_data, player, player_2, turn):
         global_variables.x_0 = x
         global_variables.y_0 = y
 
-        # mark cell as hit and check if sunk
+        # Mark cell as hit and check if sunk
         board[-1][ship_name] -= 1
         if board[-1][ship_name] == 0:
             print("\nPlayer 1's" + ship_name + "sunk!")

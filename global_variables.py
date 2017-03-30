@@ -4,7 +4,6 @@ ships = {"Aircraft Carrier": 5,
          "Destroyer": 3,
          "Patrol Boat": 2
          }
-
 x_0 = 0
 y_0 = 0
 hit = 0
