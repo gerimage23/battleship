@@ -32,12 +32,6 @@ def main():
         for i in range(10):
             board.append(['#'] * 10)
 
-        # Ships
-        # ships = {"Aircraft Carrier": 5,
-        #          "Battleship": 4,
-        #          "Submarine": 3,
-        #          "Destroyer": 3,
-        #          "Patrol Boat": 2}
         ships = global_variables.ships
         ships_data_1 = []
         ships_data_2 = []
@@ -96,7 +90,7 @@ def main():
                 else:
                     board_enemy = computer_ai(board_enemy, ships_data, player, player_2)
 
-        # winner?
+            # winner?
             if board_enemy == "WIN":
                 winner = player
             else:

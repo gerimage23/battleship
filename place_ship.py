@@ -90,8 +90,6 @@ def place_ship(board, ship, s, ori, x, y):
         for i in range(ship):
             board[x][y + i] = s
 
-    return board
-
 
 def computer_place_ships(board, ships, ships_data, player, player_2):
     for ship in ships.keys():
@@ -111,7 +109,7 @@ def computer_place_ships(board, ships, ships_data, player, player_2):
 
         # Place the ship
         print("\nThe Computer is placing a/an " + ship)
-        board = place_ship(
+        place_ship(
             board, ships[ship], ship_color(ship[0]), ori, x, y)
 
         row = []
@@ -125,7 +123,7 @@ def computer_place_ships(board, ships, ships_data, player, player_2):
             for s in range(ships[ship]):
                 row.append([x, y + s])
             ships_data.append(row)
-        # print(ships_data)
+
         input('\nPress ENTER to continue')
 
     return board
@@ -169,7 +167,7 @@ def user_place_ships(board, ships, ships_data, player, player_2):
             ships_data.append(row)
 
         # place the ship
-        board = place_ship(board, ships[ship], ship_color(ship[0]), ori, x, y)
+        place_ship(board, ships[ship], ship_color(ship[0]), ori, x, y)
         clear()
         print_board(player, player_2, board)
 
