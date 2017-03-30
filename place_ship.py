@@ -5,6 +5,8 @@ from display import *
 from sounds import *
 from global_variables import next_cell
 
+import time
+
 
 def validate(board, ship, x, y, ori):
     # Check if the ship can be placed at given coordinates
